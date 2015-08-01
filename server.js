@@ -26,7 +26,7 @@ http.createServer(function (req, res) {
 		  wholeData = chunk.toString();
 		  console.log('\n');
 		  console.log(wholeData.substring(7,9));
-		  console.log('\n'):
+		  console.log('\n');
 		  console.log(wholeData.substring(17,19));
 		});
 		
