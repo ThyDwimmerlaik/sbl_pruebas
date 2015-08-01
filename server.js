@@ -1,4 +1,5 @@
 var http = require('http');
+var wholeData = '';
 
 http.createServer(function (req, res) {
   // set up some routes
@@ -7,11 +8,11 @@ http.createServer(function (req, res) {
 	  // show the user a simple form
 	  console.log("[200] " + req.method + " to " + req.url);
 	  res.writeHead(200, "OK", {'Content-Type': 'text/html'});
-	  res.write('<html><head><title>Hello Noder!</title></head><body>');
-	  res.write('<h1>Welcome Noder, who are you?</h1>');
+	  res.write('<html><head><title>Hello cerebroU!</title></head><body>');
+	  res.write('<h1>Write your data</h1>');
 	  res.write('<form enctype="application/x-www-form-urlencoded" action="/formhandler" method="post">');
-	  res.write('Name: <input type="text" name="username" value="John Doe" /><br />');
-	  res.write('Age: <input type="text" name="userage" value="99" /><br />');
+	  res.write('Switch: <input type="text" name="switch" value="" /><br />');
+	  res.write('Value: <input type="text" name="current" value="" /><br />');
 	  res.write('<input type="submit" />');
 	  res.write('</form></body></html');
 	  res.end();
@@ -22,11 +23,11 @@ http.createServer(function (req, res) {
 		  
 		req.on('data', function(chunk) {
 		  console.log("Received body data:");
-		  console.log(chunk.toString());
+		  wholeData = chunk.toString();
+		  console.log(wholeData.substring(1, 4););
 		});
 		
 		req.on('end', function() {
-		  // empty 200 OK response for now
 		  res.writeHead(200, "OK", {'Content-Type': 'text/html'});
 		  res.end();
 		});
