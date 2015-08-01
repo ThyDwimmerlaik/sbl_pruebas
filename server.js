@@ -24,7 +24,10 @@ http.createServer(function (req, res) {
 		req.on('data', function(chunk) {
 		  console.log("Received body data:");
 		  wholeData = chunk.toString();
-		  console.log(wholeData.substring(1,4));
+		  console.log('\n');
+		  console.log(wholeData.substring(7,9));
+		  console.log('\n'):
+		  console.log(wholeData.substring(17,19));
 		});
 		
 		req.on('end', function() {
