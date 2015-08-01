@@ -17,9 +17,26 @@ http.createServer(function (req, res) {
 	  res.end();
 	  break;
 	case '/formhandler':
-	  console.log("[501] " + req.method + " to " + req.url);
-	  res.writeHead(501, "Not implemented", {'Content-Type': 'text/html'});
-	  res.end('<html><head><title>501 - Not implemented</title></head><body><h1>Not implemented!</h1></body></html>');
+	  if (req.method == 'POST') {
+		console.log("[200] " + req.method + " to " + req.url);
+		  
+		req.on('data', function(chunk) {
+		  console.log("Received body data:");
+		  console.log(chunk.toString());
+		});
+		
+		req.on('end', function() {
+		  // empty 200 OK response for now
+		  res.writeHead(200, "OK", {'Content-Type': 'text/html'});
+		  res.end();
+		});
+		
+	  } else {
+		console.log("[405] " + req.method + " to " + req.url);
+		res.writeHead(405, "Method not supported", {'Content-Type': 'text/html'});
+		res.end('<html><head><title>405 - Method not supported</title></head><body><h1>Method not supported.</h1></body></html>');
+	  }
+	  
 	  break;
     default:
       res.writeHead(404, "Not found", {'Content-Type': 'text/html'});
