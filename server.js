@@ -27,7 +27,7 @@ http.createServer(function (req, res) {
 		  console.log('\n');
 		  console.log(wholeData.substring(7,10));
 		  console.log('\n');
-		  console.log(wholeData.substring(14));
+		  console.log(wholeData.substring(19));
 		});
 		
 		req.on('end', function() {
